@@ -1,37 +1,54 @@
-import { memo } from 'react';
-import { useMovie } from '../../movie/services/useMovie';
-import { IMAGE_URL } from '../../../shared/const';
-import { useNavigate } from 'react-router-dom';
+import { memo } from "react";
+import hero from "../../../shared/assets/hero/hero.png";
+import { ArrowLeft, ArrowRight, Play } from "lucide-react";
 
-const Hero = () => {
-  const { getMovies } = useMovie();
-  const data = getMovies().data;
-  const navigate = useNavigate();
 
+const Home = () => {
   return (
-    <div className="scroll-bar container_lg flex overflow-x-auto space-x-4 pb-4">
-      {data?.results?.slice(0, 5).map((item: any, index: number) => (
-        <div
-          key={index}
-          className="
-            flex-shrink-0 relative 
-            w-[1200px] h-[550px] 
-            xl:w-[1000px] xl:h-[480px] 
-            lg:w-[800px] lg:h-[420px] 
-            md:w-[600px] md:h-[350px] 
-            sm:w-[400px] sm:h-[250px] 
-          "
-        >
-          <img
-            onClick={() => navigate(`/movie/${item.id}`)}
-            src={`${IMAGE_URL}${item.backdrop_path}`}
-            alt={item.title}
-            className="w-full h-full object-cover rounded-xl cursor-pointer"
-          />
+    <section className="dark:bg-[#000000] dark:transition-all transition-all">
+      <div className="container-hero relative">
+        <div>
+          <img src={hero} className="w-full object-cover" alt="" />
         </div>
-      ))}
-    </div>
+
+        <div className="absolute bottom-[24px] left-1/2 -translate-x-1/2 flex flex-col items-center gap-[8px] w-[380px]">
+          <h1 className="font-medium text-[32px] text-[#FFFFFF] text-center">
+            Kung Fu Panda 4
+          </h1>
+
+          <div className="flex items-center gap-2 text-[#ffffff]">
+            <span>2024</span>
+            <div className="h-[4px] w-[4px] bg-[white] rounded-[100px]"></div>
+            <span>Комедия</span>
+            <div className="h-[4px] w-[4px] bg-[white] rounded-[100px]"></div>
+            <span>1ч 34м</span>
+            <div className="h-[4px] w-[4px] bg-[white] rounded-[100px]"></div>
+            <span>EN</span>
+            <div className="h-[4px] w-[4px] bg-[white] rounded-[100px]"></div>
+            <span>6+</span>
+          </div>
+
+          <button className="flex items-center justify-center gap-[7px] w-full h-[50px] bg-[#ffffff] rounded-[12px] text-[#C61F1F]">
+            <Play />
+            <span>Watch</span>
+          </button>
+        </div>
+      </div>
+      <div className="flex justify-center mt-1">
+        <button className="border p-[13px] rounded-[50%] bg-[#1D1D1D]">
+          <ArrowLeft className="text-[red] w-5 h-5" />
+        </button>
+        <div className="px-2.5">
+          <img src={hero} width={108} alt="" />
+        </div>
+        <button className="border p-[13px] rounded-[50%] bg-[#1D1D1D]">
+          <ArrowRight className="text-[red] w-5 h-5" />
+        </button>
+      </div>
+
+      
+    </section>
   );
 };
 
-export default memo(Hero);
+export default memo(Home);

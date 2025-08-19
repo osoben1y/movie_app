@@ -8,7 +8,7 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/80 border-b border-gray-800 flex justify-center">
-      <div className="continer max-w-[1920px] h-[80px] flex items-center justify-between px-4">
+      <div className="container max-w-[1920px] h-[80px] flex items-center justify-between px-4">
         <NavLink to="/">
           <img src={Logo} alt="Logo" className="h-10" />
         </NavLink>
@@ -24,6 +24,7 @@ export default function Header() {
             <Search className="w-4 h-4" /> Поиск
           </NavLink>
         </nav>
+
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-1">
             <div className="w-6 h-4 rounded-sm overflow-hidden">
@@ -34,7 +35,10 @@ export default function Header() {
             <span className="text-white text-sm">RU</span>
           </div>
 
-          <NavLink to="/auth" className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-md hidden md:block">
+          <NavLink
+            to="/auth"
+            className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-md hidden md:block"
+          >
             Войти
           </NavLink>
 
@@ -49,7 +53,10 @@ export default function Header() {
           <NavLink to="/" className="block py-2 text-white hover:text-red-500">Сеансы</NavLink>
           <NavLink to="/" className="block py-2 text-white hover:text-red-500">Фильмы</NavLink>
           <NavLink to="/" className="block py-2 text-white hover:text-red-500">Поиск</NavLink>
-          <NavLink to="/auth" className="block py-2 bg-red-600 text-center rounded-md text-white mt-4">
+          <NavLink
+            to="/auth"
+            className="block py-2 bg-red-600 text-center rounded-md text-white mt-4"
+          >
             Войти
           </NavLink>
         </div>

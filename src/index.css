@@ -11,29 +11,21 @@ body {
   background-color: black;
 }
 
-.continer {
-  max-width: 1200px;
+.container,
+.container-hero {
+  max-width: 1212px;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1rem;   
-  padding-right: 1rem;  
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
-.continer_lg {
-  max-width: 1400px;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+.container-hero {
+  max-width: 1392px;
 }
 
-.scrol-bar {
-  scrollbar-width: none;       
-  -ms-overflow-style: none;    
-}
-
-.scrol-bar::-webkit-scrollbar {
-  display: none;             
+.images::-webkit-scrollbar,
+.actors::-webkit-scrollbar {
+  display: none;
 }
