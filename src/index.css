@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-laylo: red;
+  --color-bg-py: blue;
+}
+
+body {
+  background-color: black;
+}
+
+.continer {
+  max-width: 1200px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;   
+  padding-right: 1rem;  
+}
+
+.continer_lg {
+  max-width: 1400px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.scrol-bar {
+  scrollbar-width: none;       
+  -ms-overflow-style: none;    
+}
+
+.scrol-bar::-webkit-scrollbar {
+  display: none;             
+}
