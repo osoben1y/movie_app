@@ -1,6 +1,6 @@
 import { memo } from "react";
 import hero from "../../../shared/assets/hero/hero.png";
-import { ArrowLeft, ArrowRight, Play } from "lucide-react";
+import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 
 
 const Home = () => {
@@ -36,13 +36,13 @@ const Home = () => {
       </div>
       <div className="flex justify-center mt-1">
         <button className="border p-[13px] rounded-[50%] bg-[#1D1D1D]">
-          <ArrowLeft className="text-[red] w-5 h-5" />
+          <ChevronLeft className="text-[red] w-5 h-5" />
         </button>
         <div className="px-2.5">
           <img src={hero} width={108} alt="" />
         </div>
         <button className="border p-[13px] rounded-[50%] bg-[#1D1D1D]">
-          <ArrowRight className="text-[red] w-5 h-5" />
+          <ChevronRight className="text-[red] w-5 h-5" />
         </button>
       </div>
 

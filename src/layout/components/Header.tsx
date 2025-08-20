@@ -17,7 +17,7 @@ export default function Header() {
           <NavLink to="/" className="text-white hover:text-red-500 flex items-center gap-2">
             <House className="w-4 h-4" /> Сеансы
           </NavLink>
-          <NavLink to="/" className="text-white hover:text-red-500 flex items-center gap-2">
+          <NavLink to="/movie" className="text-white hover:text-red-500 flex items-center gap-2">
             <Clapperboard className="w-4 h-4" /> Фильмы
           </NavLink>
           <NavLink to="/" className="text-white hover:text-red-500 flex items-center gap-2">
@@ -51,7 +51,7 @@ export default function Header() {
       {open && (
         <div className="absolute top-[80px] left-0 w-full bg-black/95 border-t border-gray-800 p-4 md:hidden">
           <NavLink to="/" className="block py-2 text-white hover:text-red-500">Сеансы</NavLink>
-          <NavLink to="/" className="block py-2 text-white hover:text-red-500">Фильмы</NavLink>
+          <NavLink to="/movie" className="block py-2 text-white hover:text-red-500">Фильмы</NavLink>
           <NavLink to="/" className="block py-2 text-white hover:text-red-500">Поиск</NavLink>
           <NavLink
             to="/auth"

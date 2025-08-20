@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import Hero from './components/Hero';
 import TopWeeks from "../../shared/components/top-weeks/TopWeeks";
-import MovieView from "../../shared/components/movie-view/MovieView";
 import { useFullMovieData } from "../../shared/hooks";
+import MovieSwiper from '../../shared/components/movie-swiper/MovieSwiper';
 
 const Home = () => {
 
@@ -11,9 +11,9 @@ const Home = () => {
   return (
     <div>
       <Hero />
-      <div className="container-hero mb-[80px]">
+      <div className="container-hero">
         <TopWeeks />
-        <MovieView data={data} />
+        <MovieSwiper data={data} />
       </div>
     </div>
   );

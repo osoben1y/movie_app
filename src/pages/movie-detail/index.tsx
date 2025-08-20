@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useMovieDetail } from "./services/useMovieDetail";
 import { IMAGE_URL } from "../../shared/const";
 import MovieView from "../../shared/components/movie-view/MovieView";
+import { CalendarDays, ChartNoAxesCombined, Clock, CircleDollarSign } from "lucide-react";
 
 const MovieDetail = () => {
   const { id } = useParams();
@@ -36,10 +37,10 @@ const MovieDetail = () => {
           <h1 className="text-4xl font-bold drop-shadow-lg">{data?.title}</h1>
           <p className="mt-3 text-lg text-gray-200 line-clamp-3">{data?.overview}</p>
           <div className="mt-4 flex flex-wrap items-center gap-6 text-gray-300 text-sm">
-            <span>📅 {data?.release_date?.split("-")[0]}</span>
-            <span>⭐ {data?.vote_average?.toFixed(1)}</span>
-            <span>⏳ {data?.runtime} min</span>
-            <span>💰 {data?.budget?.toLocaleString()} USD</span>
+            <span><CalendarDays/> {data?.release_date?.split("-")[0]}</span>
+            <span><ChartNoAxesCombined /> {data?.vote_average?.toFixed(1)}</span>
+            <span><Clock /> {data?.runtime} min</span>
+            <span><CircleDollarSign /> {data?.budget?.toLocaleString()} USD</span>
           </div>
         </div>
       </div>
