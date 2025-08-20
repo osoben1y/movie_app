@@ -24,8 +24,8 @@ const MovieView: FC<Props> = ({ data, className, isLoading }) => {
   }
 
   return (
-    <div className={`container mx-auto px-4 ${className || ""}`}>
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+    <div className={`container mx-auto pt-[20px] pb-[80px] ${className || ""}`}>
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 ">
         {data.slice(0, 20).map((movie) => (
           <div
             key={movie.id}
