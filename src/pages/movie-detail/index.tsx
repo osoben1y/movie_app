@@ -1,17 +1,34 @@
-import { memo } from "react";
-import { useParams } from "react-router-dom";
+import { memo, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { useMovieDetail } from "./services/useMovieDetail";
 import { IMAGE_URL } from "../../shared/const";
 import MovieView from "../../shared/components/movie-view/MovieView";
-import { CalendarDays, ChartNoAxesCombined, Clock, CircleDollarSign } from "lucide-react";
+import { CalendarDays, ChartNoAxesCombined, Clock, CircleDollarSign, PlayCircle } from "lucide-react";
+import MovieTrailer from "../../shared/components/trailer/MovieTrailer";
+import { useVideos } from "../../shared/hooks/useVideos";
 
 const MovieDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const { getMovieById, getMovieItems } = useMovieDetail();
   const { data, isLoading } = getMovieById(id || "");
   const { data: imagesData } = getMovieItems(id || "", "images");
   const { data: similarData } = getMovieItems(id || "", "similar");
   const { data: creditsData } = getMovieItems(id || "", "credits");
+  const [trailerOpen, setTrailerOpen] = useState(false);
+  const [trailerKey, setTrailerKey] = useState("");
+  const { getMovieVideos } = useVideos();
+  const { data: videosData } = getMovieVideos(id || "");
+
+  const handleOpenTrailer = () => {
+    const trailer = videosData?.results?.find(
+      (video: any) => video.type === "Trailer" && video.site === "YouTube"
+    );
+    if (trailer) {
+      setTrailerKey(trailer.key);
+      setTrailerOpen(true);
+    }
+  };
 
   if (isLoading) {
     return (
@@ -36,11 +53,41 @@ const MovieDetail = () => {
         <div className="absolute bottom-10 left-10 max-w-3xl">
           <h1 className="text-4xl font-bold drop-shadow-lg">{data?.title}</h1>
           <p className="mt-3 text-lg text-gray-200 line-clamp-3">{data?.overview}</p>
-          <div className="mt-4 flex flex-wrap items-center gap-6 text-gray-300 text-sm">
-            <span><CalendarDays/> {data?.release_date?.split("-")[0]}</span>
-            <span><ChartNoAxesCombined /> {data?.vote_average?.toFixed(1)}</span>
-            <span><Clock /> {data?.runtime} min</span>
-            <span><CircleDollarSign /> {data?.budget?.toLocaleString()} USD</span>
+          <div className="mt-4 flex flex-col gap-4 text-gray-300 text-sm">
+            <div className="flex flex-wrap items-center gap-6">
+              <span className="flex items-center gap-1">
+                <CalendarDays /> {data?.release_date?.split("-")[0]}
+              </span>
+              <span className="flex items-center gap-1">
+                <ChartNoAxesCombined /> {data?.vote_average?.toFixed(1)}
+              </span>
+              <span className="flex items-center gap-1">
+                <Clock /> {data?.runtime} min
+              </span>
+              <span className="flex items-center gap-1">
+                <CircleDollarSign /> {data?.budget?.toLocaleString()} USD
+              </span>
+            </div>
+
+            {videosData?.results?.some(
+              (video: any) => video.type === "Trailer" && video.site === "YouTube"
+            ) && (
+                <>
+                  <button
+                    onClick={handleOpenTrailer}
+                    className="flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white text-base sm:text-lg py-3 px-6 rounded-xl transition transform hover:scale-105 shadow-lg hover:shadow-red-500/40 w-fit animate-pulse"
+                  >
+                    <PlayCircle className="w-6 h-6" />
+                    <span className="font-semibold">Посмотреть трейлер</span>
+                  </button>
+
+                  <MovieTrailer
+                    videoKey={trailerKey}
+                    isOpen={trailerOpen}
+                    onClose={() => setTrailerOpen(false)}
+                  />
+                </>
+              )}
           </div>
         </div>
       </div>
@@ -56,7 +103,8 @@ const MovieDetail = () => {
               return (
                 <div
                   key={user.id}
-                  className="min-w-[140px] bg-[#1c1c1c] rounded-xl p-4 hover:bg-[#2a2a2a] transition"
+                  onClick={() => navigate(`/actor/${user.id}`)}
+                  className="min-w-[140px] bg-[#1c1c1c] rounded-xl p-4 hover:bg-[#2a2a2a] transition cursor-pointer"
                 >
                   <img
                     loading="lazy"

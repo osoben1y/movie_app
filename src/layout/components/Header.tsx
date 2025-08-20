@@ -1,4 +1,4 @@
-import { Search, House, Clapperboard, Menu } from "lucide-react";
+import { Search, House, Clapperboard, Menu, Heart } from "lucide-react";
 import Logo from "../../shared/assets/header_logo.svg";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
@@ -20,8 +20,11 @@ export default function Header() {
           <NavLink to="/movie" className="text-white hover:text-red-500 flex items-center gap-2">
             <Clapperboard className="w-4 h-4" /> Фильмы
           </NavLink>
-          <NavLink to="/" className="text-white hover:text-red-500 flex items-center gap-2">
+          <NavLink to="/search" className="text-white hover:text-red-500 flex items-center gap-2">
             <Search className="w-4 h-4" /> Поиск
+          </NavLink>
+          <NavLink to="/favourites" className="text-white hover:text-red-500 flex items-center gap-2">
+            <Heart className="w-4 h-4" /> Избранное
           </NavLink>
         </nav>
 
@@ -52,7 +55,8 @@ export default function Header() {
         <div className="absolute top-[80px] left-0 w-full bg-black/95 border-t border-gray-800 p-4 md:hidden">
           <NavLink to="/" className="block py-2 text-white hover:text-red-500">Сеансы</NavLink>
           <NavLink to="/movie" className="block py-2 text-white hover:text-red-500">Фильмы</NavLink>
-          <NavLink to="/" className="block py-2 text-white hover:text-red-500">Поиск</NavLink>
+          <NavLink to="/search" className="block py-2 text-white hover:text-red-500">Поиск</NavLink>
+          <NavLink to="/favourites" className="block py-2 text-white hover:text-red-500">Избранное</NavLink>
           <NavLink
             to="/auth"
             className="block py-2 bg-red-600 text-center rounded-md text-white mt-4"

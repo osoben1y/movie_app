@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
+import favoritesReducer from "../shared/slices/favoritesSlice";
 
 export const store = configureStore({
   reducer: {
-    fake: () => "laylo"
+    favorites: favoritesReducer,
   },
 });
 
