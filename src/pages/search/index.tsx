@@ -2,7 +2,7 @@ import { memo, useState, useEffect, useRef, useCallback } from "react";
 import { useSearch } from "./services/useSearch";
 import MovieView from "../../shared/components/movie-view/MovieView";
 import { Input, Pagination, type PaginationProps } from "antd";
-import { useParamsHooks } from "../../shared/hooks/useParams";
+import { useParamsHook } from "../../shared/hooks/useParamsHook";
 import { Search as SearchIcon } from "lucide-react";
 import ErrorBoundary from "../../shared/components/error/ErrorBoundary";
 import MovieCardSkeleton from "../../shared/components/loading/MovieCardSkeleton";
@@ -16,7 +16,7 @@ const Search = () => {
   const loaderRef = useRef<HTMLDivElement>(null);
   const debounceRef = useRef<NodeJS.Timeout | null>(null);
 
-  const { getParam, setParam, removeParam } = useParamsHooks();
+  const { getParam, setParam, removeParam } = useParamsHook();
   const query = getParam("query") || "";
   const pageParam = getParam("page") || "1";
 

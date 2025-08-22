@@ -9,7 +9,7 @@ const ActiorDetail = () => {
   const { data: personData, isLoading, error } = getPersonSingle(id || "");
   const { data: personMoviesData } = getMovieSingle(id || "");
 
-  if (isLoading) return <div className="text-center py-20 text-lg">Loading...</div>;
+  if (isLoading) return <div className="text-center py-20 text-lg text-gray-700 dark:text-gray-200">Loading...</div>;
   if (error) return <div className="text-center text-red-500 py-20">Error: {error.message}</div>;
   if (!personData) return <div className="text-center text-gray-500">Actor not found</div>;
 
@@ -27,23 +27,25 @@ const ActiorDetail = () => {
       )}
       <div className="relative z-10 p-6 max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
-          <img
-            src={`https://image.tmdb.org/t/p/w500${personData.profile_path}`}
-            alt={personData.name}
-            className="w-64 h-auto rounded-xl shadow-lg object-cover border border-white/20"
-          />
+          <div className="relative bg-white/70 dark:bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden shadow-xl">
+            <img
+              src={`https://image.tmdb.org/t/p/w500${personData.profile_path}`}
+              alt={personData.name}
+              className="w-64 h-auto object-cover"
+            />
+          </div>
           <div className="flex-1 bg-white/70 dark:bg-white/10 backdrop-blur-md p-6 rounded-2xl shadow-xl space-y-4 transition-colors duration-300">
             <h1 className="text-3xl font-bold">{personData.name}</h1>
             <p>
-              <span className="font-semibold"> Birthday:</span>{" "}
+              <span className="font-semibold">Birthday:</span>{" "}
               {personData.birthday || "N/A"}
             </p>
             <p>
-              <span className="font-semibold"> Born in:</span>{" "}
+              <span className="font-semibold">Born in:</span>{" "}
               {personData.place_of_birth || "N/A"}
             </p>
             <p>
-              <span className="font-semibold"> Known For:</span>{" "}
+              <span className="font-semibold">Known For:</span>{" "}
               {personData.known_for_department}
             </p>
             <div className="pt-4 max-h-64 overflow-y-auto">
@@ -58,7 +60,7 @@ const ActiorDetail = () => {
         {personMoviesData?.cast?.length > 0 && (
           <div className="mt-12">
             <h2 className="text-2xl font-semibold mb-4 border-b border-gray-300 dark:border-white/30 pb-2">
-               Top Movies
+              Top Movies
             </h2>
             <MovieView data={personMoviesData.cast.slice(0, 4)} />
           </div>

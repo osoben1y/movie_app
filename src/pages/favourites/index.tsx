@@ -1,9 +1,8 @@
 import { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFavorites, loadFavorites, removeFromFavorites } from '../../shared/slices/favoritesSlice';
+import { selectFavorites, loadFavorites } from '../../shared/slices/favoritesSlice';
 import type { AppDispatch, RootState } from '../../app/store';
 import MovieView from '../../shared/components/movie-view/MovieView';
-import { Trash2 } from 'lucide-react';
 import ErrorBoundary from '../../shared/components/error/ErrorBoundary';
 import ErrorFallback from '../../shared/components/error/ErrorFallback';
 
@@ -15,9 +14,6 @@ const Favorites = () => {
     dispatch(loadFavorites());
   }, [dispatch]);
 
-  const handleRemoveFromFavorites = (id: number) => {
-    dispatch(removeFromFavorites(id));
-  };
 
   return (
     <div className="container mx-auto px-4 py-4 sm:py-8">
@@ -43,20 +39,7 @@ const Favorites = () => {
         </div>
       ) : (
         <ErrorBoundary fallback={<ErrorFallback error={new Error("An error occurred")} resetErrorBoundary={() => {}} />}>
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-6">
-            {favorites.map((movie: any) => (
-              <div key={movie.id} className="relative group">
-                <MovieView data={[movie]} />
-                <button
-                  onClick={() => handleRemoveFromFavorites(movie.id)}
-                  className="absolute top-2 right-2 p-2 bg-black bg-opacity-70 rounded-full sm:opacity-0 opacity-100 sm:group-hover:opacity-100 transition-opacity hover:bg-red-600"
-                  aria-label="Remove from favorites"
-                >
-                  <Trash2 className="w-4 h-4" />
-                </button>
-              </div>
-            ))}
-          </div>
+          <MovieView data={favorites} />
         </ErrorBoundary>
       )}
     </div>
