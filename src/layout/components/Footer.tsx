@@ -17,7 +17,7 @@ import Logo from "../../shared/assets/footer/LOGOTYPE.svg";
 const Footer = () => {
   return (
     <footer className="container mx-auto">
-      <div className="rounded-[15px] text-white p-10 bg-[#111111]">
+      <div className="rounded-[15px] p-10" style={{ backgroundColor: 'var(--card-bg)', color: 'var(--fg)' }}>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
           <div className="space-y-6">
             <div className="flex justify-center md:justify-start">
@@ -43,7 +43,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="flex items-center justify-center md:justify-start gap-3 text-gray-300 hover:text-red-500 transition-colors"
+                  className="flex items-center justify-center md:justify-start gap-3 hover:text-red-500 transition-colors"
                 >
                   <img src={list} alt="list" className="w-6 h-6" />
                   <span>Публичная оферта</span>
@@ -63,7 +63,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="flex items-center justify-center md:justify-start gap-3 text-gray-300 hover:text-red-500 transition-colors"
+                  className="flex items-center justify-center md:justify-start gap-3 hover:text-var(--primary-color) transition-colors"
                 >
                   <img src={question} alt="question" className="w-6 h-6" />
                   <span>F.A.Q</span>
@@ -72,7 +72,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="flex items-center justify-center md:justify-start gap-3 text-gray-300 hover:text-red-500 transition-colors"
+                  className="flex items-center justify-center md:justify-start gap-3 hover:text-var(--primary-color) transition-colors"
                 >
                   <img src={phone} alt="phone" className="w-6 h-6" />
                   <span>Контакты</span>
@@ -87,7 +87,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="flex items-center justify-center md:justify-start gap-3 text-gray-300 hover:text-red-500 transition-colors"
+                  className="flex items-center justify-center md:justify-start gap-3 hover:text-red-500 transition-colors"
                 >
                   <img src={movie} alt="movie" className="w-6 h-6" />
                   <span>Кино</span>
@@ -96,7 +96,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="flex items-center justify-center md:justify-start gap-3 text-gray-300 hover:text-red-500 transition-colors"
+                  className="flex items-center justify-center md:justify-start gap-3 hover:text-red-500 transition-colors"
                 >
                   <img src={clapperboard} alt="clapperboard" className="w-6 h-6" />
                   <span>Театр</span>
@@ -105,7 +105,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="flex items-center justify-center md:justify-start gap-3 text-gray-300 hover:text-red-500 transition-colors"
+                  className="flex items-center justify-center md:justify-start gap-3 hover:text-red-500 transition-colors"
                 >
                   <img src={lenta} alt="lenta" className="w-6 h-6" />
                   <span>Концерты</span>
@@ -114,7 +114,7 @@ const Footer = () => {
               <li>
                 <a
                   href="#"
-                  className="flex items-center justify-center md:justify-start gap-3 text-gray-300 hover:text-red-500 transition-colors"
+                  className="flex items-center justify-center md:justify-start gap-3 hover:text-red-500 transition-colors"
                 >
                   <img src={sport} alt="sport" className="w-6 h-6" />
                   <span>Спорт</span>
